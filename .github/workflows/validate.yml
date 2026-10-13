@@ -1,0 +1,24 @@
+name: Verificar materiais
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Recriar apresentação e roteiro
+        run: python3 scripts/build.py
+      - name: Verificar arquivos, duração e exemplos
+        run: python3 tests/verify.py
+      - name: Verificar JavaScript
+        run: node --check shared/js/deck.js
+      - name: Conferir pacote atualizado
+        run: git diff --exit-code -- dist/ episodes/01-texto-aos-numeros/speaker-notes.md
