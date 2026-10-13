@@ -64,13 +64,13 @@ Também precisamos distinguir uma aplicação de IA do modelo que ela utiliza. A
 
 “O primeiro componente desse caminho escolhe unidades do texto. Vamos conhecer esse componente.”
 
-## Slide 04: O tokenizer organiza o texto em unidades
+## Slide 04: Como uma caixa de peças de texto
 
 Duração sugerida: 3 min. Referência acumulada: 5–8 min.
 
 ### Fala sugerida
 
-“Vou usar a ideia de uma caixa de peças. Em vez de precisar de uma peça diferente para cada frase possível, conseguimos construir muitas frases combinando unidades menores. O tokenizer trabalha com um vocabulário finito: um conjunto de unidades que ele sabe representar.
+“Vou usar a ideia de uma caixa de peças. O desenho mostra uma divisão inventada da nossa pergunta. O símbolo ␠ torna o espaço visível; no próximo slide vamos contar cada peça com calma. Em vez de precisar de uma peça diferente para cada frase possível, conseguimos construir muitas frases combinando unidades menores. O tokenizer trabalha com um vocabulário finito: um conjunto de unidades que ele sabe representar.
 
 O texto entra, o tokenizer aplica suas regras e produz uma sequência dessas unidades. Nós chamamos cada unidade de token e o processo de tokenização. O vocabulário e o algoritmo determinam quais peças podem aparecer e como o texto é representado.
 
@@ -164,7 +164,7 @@ Pergunte: “Precisamos ter uma peça inteira para cada palavra que alguém poss
 
 “Há diferentes estratégias para aprender esse catálogo de peças. Vou dar apenas a ideia de três delas.”
 
-## Slide 08: Três estratégias para aprender as peças
+## Slide 08: Há vários jeitos de preparar a caixa
 
 Duração sugerida: 4 min. Referência acumulada: 18–22 min.
 
@@ -180,7 +180,7 @@ Revele Unigram. “O Unigram começa com várias unidades candidatas e um modelo
 
 ### Limite e tempo
 
-Não entre em fórmulas de frequência, loss ou programação dinâmica. A mensagem principal é a construção e o uso de unidades reutilizáveis. Reserve uns trinta segundos para perguntar se a diferença entre aprender o vocabulário e aplicar o tokenizer ficou clara.
+Apresente os verbos primeiro: juntar, avaliar, enxugar. Diga os nomes técnicos como referências para reconhecer depois. Não peça que a plateia memorize as três famílias. Não entre em fórmulas de frequência, loss ou programação dinâmica. A mensagem principal é a construção e o uso de unidades reutilizáveis. Reserve uns trinta segundos para perguntar se a diferença entre aprender o vocabulário e aplicar o tokenizer ficou clara.
 
 ### Se o tempo apertar
 
@@ -210,11 +210,13 @@ Um token especial pode sinalizar início, fim ou outro controle compatível com 
 
 “Agora temos as unidades da entrada. Como o computador identifica qual unidade é qual? É aqui que entram os IDs.”
 
-## Slide 10: Cada entrada do catálogo tem um ID
+## Slide 10: Cada peça tem uma etiqueta numérica
 
 Duração sugerida: 3 min. Referência acumulada: 24–27 min.
 
 ### Fala sugerida
+
+“Esta é a mesma peça de texto que vimos antes. Agora ela tem uma etiqueta: 8. O número é uma referência no catálogo, como a etiqueta de um item numa caixa. Ele não diz o que crédito significa, nem mede sua importância.” Revele a definição de Token ID e retome a tabela.
 
 “Pensem num catálogo de uma biblioteca ou de produtos. O número do catálogo serve para localizar uma entrada. Com os tokens, fazemos algo parecido: cada entrada do vocabulário tem um identificador inteiro. Esse identificador se chama Token ID.
 
@@ -274,13 +276,13 @@ Aponte da primeira para a última posição. Diga “qual item” ao apontar par
 
 “Nós temos referências para as peças. Agora precisamos das representações numéricas que a rede neural usa para trabalhar com elas.”
 
-## Slide 13: Um vetor é uma lista de números
+## Slide 13: Uma ficha com vários números
 
 Duração sugerida: 3 min. Referência acumulada: 31–34 min.
 
 ### Fala sugerida
 
-“Um vetor pode ser entendido, neste momento, como uma lista de números com um tamanho definido. O desenho tem quatro números, então dizemos que ele tem quatro dimensões. Vetores reais de modelos podem ter muito mais dimensões. O tamanho depende da arquitetura.
+“Continuamos na mesma caixa de peças: a peça tem uma etiqueta, e usamos essa etiqueta para localizar sua ficha numérica. Ficha é só uma analogia para uma lista aprendida, sem campos como dinheiro ou agricultura. Um vetor pode ser entendido, neste momento, como uma lista de números com um tamanho definido. O desenho tem quatro números, então dizemos que ele tem quatro dimensões. Vetores reais de modelos podem ter muito mais dimensões. O tamanho depende da arquitetura.
 
 A rede neural utiliza representações numéricas para fazer seus cálculos. Para cada entrada do vocabulário, existe um vetor aprendido. Quando esse vetor representa um token na entrada do modelo, chamamos de embedding de token.” Revele a frase com o termo técnico.
 
@@ -304,7 +306,7 @@ Duração sugerida: 4 min. Referência acumulada: 34–38 min.
 
 ### Fala sugerida
 
-“O modelo mantém uma tabela de vetores. Em matemática, uma tabela de linhas e colunas é uma matriz. Aqui chamamos de matriz de embeddings. Cada entrada do vocabulário tem uma linha com seu vetor.
+“Pensem no catálogo da nossa caixa de peças. A etiqueta diz onde procurar; a ficha numérica é o que encontramos. O modelo mantém uma tabela de vetores. Em matemática, uma tabela de linhas e colunas é uma matriz. Aqui chamamos de matriz de embeddings. Cada entrada do vocabulário tem uma linha com seu vetor.
 
 Vamos acompanhar crédito. Na nossa tabela fictícia, seu ID é 8. Usamos o 8 para selecionar a linha correspondente. A saída é a lista com 0,20, menos 0,10, 0,70 e 0,30. Não fizemos uma conta em que o inteiro 8 foi transformado em significado. Fizemos uma consulta à representação aprendida. O nome dessa seleção é lookup.”
 
@@ -370,13 +372,13 @@ Explique que a representação que entra na rede também pode incorporar posiç�
 
 “Hoje paramos nessa porta. Antes de fecharmos, vamos reconstruir o caminho que já conseguimos acompanhar.”
 
-## Slide 17: O caminho que construímos hoje
+## Slide 17: Peça → etiqueta → ficha numérica
 
 Duração sugerida: 1 min. Referência acumulada: 43–44 min.
 
 ### Fala sugerida e revelações
 
-“Começamos com texto. O tokenizer organiza as unidades.” Avance para os tokens. “Cada unidade tem uma entrada no vocabulário.” Avance para os IDs. “O ID permite selecionar a representação daquela entrada.” Avance para os vetores. “A rede processa essa sequência usando também informações de posição, conforme sua arquitetura.” Revele a frase final.
+“Começamos com texto. O tokenizer organiza as unidades.” Avance para os tokens. “Cada peça tem uma etiqueta: seu ID no vocabulário.” Avance para os IDs. “Usamos a etiqueta para buscar a ficha numérica da peça: seu embedding inicial.” Avance para os vetores. “A rede processa essa sequência usando também informações de posição, conforme sua arquitetura.” Revele a frase final.
 
 “Quero que guardem a diferença de papéis. Token é a unidade representada. ID é a referência dentro do vocabulário. Embedding é o vetor aprendido que usamos como ponto de partida. O Transformer vai transformar essas representações com as relações do contexto.”
 

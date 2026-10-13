@@ -22,3 +22,10 @@ A história percorre “Explique crédito rural.” até os vetores de entrada. 
 ## Decisões
 
 O motor usa HTML/CSS/JavaScript nativos para eliminar downloads e a exigência de servidor local na reunião. Recursos opcionais só entram se ajudarem a explicar ou apresentar. O projeto começa privado e não publica um site automaticamente. Código e conteúdo têm licenças distintas.
+
+
+## Atualização ELI5 e GitHub Pages — 13/10/2026
+
+A mesma analogia acompanha a aula: peças de texto (tokens), etiquetas do catálogo (IDs) e fichas numéricas aprendidas (embeddings). Os slides 04, 05, 10, 13 e 17 tornam esses objetos visíveis; os nomes técnicos aparecem junto da explicação em linguagem comum. Os verbos juntar, avaliar e enxugar orientam a leitura das famílias de tokenização. Os IDs e vetores fictícios permanecem consistentes, e as dimensões não recebem rótulos semânticos humanos. Mantemos os 45 minutos de conteúdo, 5 de perguntas e três anexos opcionais.
+
+O portal e a apresentação são publicados no GitHub Pages, mantendo o repositório privado. O pacote `_site/` contém somente `index.html`, `shared/css/theme.css`, `dist/episodio-01.html` e `.nojekyll`. O HTML incorpora as notas necessárias à janela da apresentadora; essas notas também podem ser lidas no código do site público. A lista explícita evita publicar documentos de planejamento ou testes. O workflow de Pages verifica o conteúdo antes da publicação e usa o ambiente `github-pages`.

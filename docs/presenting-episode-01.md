@@ -2,11 +2,15 @@
 
 ## Antes da reunião
 
-Baixe `dist/episodio-01.html` e abra no computador que fará a apresentação. O arquivo não usa fontes externas, CDNs nem chamadas a serviços de IA. Você pode desligar a rede depois de baixar.
+Abra o [portal da série](https://glaucia86.github.io/llms-por-dentro/) e clique em **Abrir apresentação**. Para ter uma reserva offline, baixe `dist/episodio-01.html` e teste o arquivo no computador que fará a apresentação. O arquivo não usa fontes externas, CDNs nem chamadas a serviços de IA. Você pode desligar a rede depois de baixar.
 
-Clique em **Apresentadora** ou pressione **S**. Se o navegador bloquear o popup, permita-o para esse arquivo. Deixe os slides numa janela e as notas em outra. O roteiro Markdown também pode ficar aberto num editor como alternativa. Compartilhe **apenas a janela dos slides**, inclusive quando a reunião usar um único monitor.
+Clique em **Apresentadora** ou pressione **S**. Se o navegador bloquear o popup, permita-o para o site ou arquivo local. Deixe os slides numa janela e as notas em outra. O roteiro Markdown também pode ficar aberto num editor como alternativa. Compartilhe **apenas a janela dos slides**, inclusive quando a reunião usar um único monitor.
 
 Teste o avanço até o slide 05: três avanços revelam a sequência, a legenda e a conclusão. No slide 14, clique em dois IDs e confira a mudança do vetor. Use Home para voltar à abertura. Inicie o relógio da janela da apresentadora quando começar a palestra.
+
+## A analogia que acompanha a aula
+
+Use a mesma imagem ao longo da explicação: o token é a peça; o ID é a etiqueta que permite localizar uma entrada; o embedding é a ficha de números aprendidos. Nos slides 04, 05, 10, 13 e 17, retome esses objetos antes de dar o nome técnico. A ficha não possui campos humanos como dinheiro ou agricultura, e a etiqueta não mede significado.
 
 ## Percurso de 50 minutos
 

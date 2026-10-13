@@ -4,3 +4,5 @@ Thumbs.db
 .superpowers/
 .qa/
 *.log
+_site/
+__pycache__/

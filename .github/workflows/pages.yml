@@ -1,0 +1,50 @@
+name: Publicar GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Preparar portal e apresentação
+        run: python3 scripts/build_site.py
+      - name: Verificar conteúdo e publicação
+        run: |
+          python3 tests/verify.py
+          python3 tests/verify_site.py
+          node --check shared/js/deck.js
+          git diff --exit-code -- dist/ episodes/01-texto-aos-numeros/speaker-notes.md
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4

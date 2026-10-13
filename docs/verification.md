@@ -28,3 +28,14 @@ Uma revisão independente leu o material, os controles, a aparência e o empacot
 ## Repositório remoto
 
 O projeto está em [glaucia86/llms-por-dentro](https://github.com/glaucia86/llms-por-dentro), criado como privado. O material inclui os planos dos quatro episódios e o episódio 01 completo. Nenhum site foi publicado.
+
+
+## Atualização ELI5 e Pages — 13/10/2026
+
+- `python3 scripts/build_site.py`: gerou a apresentação autocontida, o roteiro e o pacote público.
+- `python3 tests/verify.py`: 7 verificações passaram; 19 slides principais, 45 + 5 minutos e 3 anexos.
+- `python3 tests/verify_site.py`: 2 verificações passaram; somente os arquivos de publicação previstos, sem links locais quebrados ou caminhos absolutos incompatíveis com um site de projeto.
+- `node --check shared/js/deck.js`: passou.
+- `tests/browser-check.cjs`, com Playwright e Chromium locais: navegação, revelações, consulta de embeddings, roteiro, cronômetro, impressão e todos os 22 slides em 1440 px e 375 px passaram. Nenhum erro de JavaScript ou requisição remota.
+- `tests/pages-browser-check.cjs`: o portal, a apresentação, recarga com fragmento, notas e ambas as prévias da apresentadora funcionaram por HTTP sob `/llms-por-dentro/`. Nenhuma resposta de erro ou requisição externa.
+- Inspeção visual dos slides alterados: a analogia mantém os números e as ressalvas técnicas legíveis. O marcador de espaço é desenhado por CSS para não depender da cobertura de caracteres da fonte.

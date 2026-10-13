@@ -21,8 +21,8 @@ O foco é a inferência de LLMs de texto causais, que geram a resposta em sequê
 
 ## Apresentar o episódio 01
 
-1. Baixe [episodio-01.html](dist/episodio-01.html) pelo botão **Download raw file** do GitHub.
-2. Abra o arquivo no Edge, Chrome ou Firefox. Não precisa de instalação, servidor ou internet.
+1. Abra o [portal da série](https://glaucia86.github.io/llms-por-dentro/) e clique em **Abrir apresentação**.
+2. Use Edge, Chrome ou Firefox. Para apresentar sem internet, baixe [episodio-01.html](dist/episodio-01.html) pelo botão **Download raw file** e abra o arquivo local.
 3. Use as setas ou os botões para avançar. Quando houver uma revelação, o primeiro avanço revela a informação e o seguinte muda o slide.
 4. Pressione **S** ou clique em **Apresentadora** para abrir o roteiro em outra janela. Permita o popup se o navegador bloquear.
 5. Na reunião, compartilhe **apenas a janela dos slides**. A janela da apresentadora contém a fala completa, o tempo sugerido, o próximo slide e controles.
@@ -45,7 +45,7 @@ O conteúdo abre como documento contínuo se JavaScript estiver desativado. Use 
 
 ```text
 llms-por-dentro/
-├── index.html                 # portal local da série
+├── index.html                 # portal da série
 ├── episodes/                  # um diretório por encontro
 │   ├── 01-texto-aos-numeros/   # slides, plano e roteiro completo
 │   ├── 02-contexto-transformers/
@@ -61,7 +61,7 @@ llms-por-dentro/
 └── docs/                      # decisões, plano da série e ensaio
 ```
 
-O workflow em `.github/workflows/validate.yml` verifica o pacote e o JavaScript a cada push ou pull request. Ele não publica um site.
+O workflow `validate.yml` verifica o pacote e o JavaScript a cada push ou pull request. O workflow `pages.yml` publica o portal e a apresentação no GitHub Pages a partir de `main`, após verificar o conteúdo. `scripts/build_site.py` monta `_site/` com uma lista explícita de arquivos públicos.
 
 ## Editar e verificar
 
@@ -70,6 +70,10 @@ Edite `episodes/01-texto-aos-numeros/index.html`. Cada `section.slide` contém o
 ```bash
 python3 scripts/build.py
 python3 tests/verify.py
+
+# Preparar e conferir o site
+python3 scripts/build_site.py
+python3 tests/verify_site.py
 ```
 
 O empacotamento usa somente a biblioteca padrão do Python. Os controles usam JavaScript nativo. A opção por um motor pequeno, em vez de um framework de slides, permite que os slides e as notas funcionem por abertura direta de arquivo, inclusive sem acesso a CDNs.
@@ -80,10 +84,10 @@ Para uma verificação adicional, quem já tem Playwright e Chromium instalados 
 
 Segmentações, IDs e vetores dos desenhos são **exemplos fictícios**, identificados nos slides. Eles explicam o mecanismo e não simulam um tokenizer comercial. Para contar tokens reais, use o tokenizer e a configuração compatíveis com o modelo escolhido.
 
-As analogias têm limites explícitos no roteiro. Embeddings iniciais de tokens não equivalem a embeddings de documentos para busca. IDs identificam entradas do vocabulário, e a proximidade numérica de dois IDs não mede semelhança de significado.
+A aula 1 segue uma analogia visual contínua: peça de texto → etiqueta no catálogo → ficha numérica. As analogias têm limites explícitos no roteiro. Embeddings iniciais de tokens não equivalem a embeddings de documentos para busca. IDs identificam entradas do vocabulário, e a proximidade numérica de dois IDs não mede semelhança de significado.
 
 ## Licenças e colaboração
 
 O código usa [MIT](LICENSE). Slides, roteiros, planos de aula e ilustrações didáticas autorais usam [CC BY 4.0](LICENSE-CONTENT.md). Fontes citadas mantêm suas próprias licenças.
 
-Consulte [CONTRIBUTING.md](CONTRIBUTING.md) para propor correções ou novos exemplos. Os episódios 02 a 04 têm planos completos de escopo, mas suas apresentações ainda serão produzidas. O projeto começa privado. A publicação de um site é uma decisão futura.
+Consulte [CONTRIBUTING.md](CONTRIBUTING.md) para propor correções ou novos exemplos. Os episódios 02 a 04 têm planos completos de escopo, mas suas apresentações ainda serão produzidas. O repositório permanece privado. O portal e o episódio 01 são publicados como um site público, incluindo as notas incorporadas ao HTML para a janela da apresentadora. Os demais arquivos do repositório não fazem parte do pacote de publicação.
